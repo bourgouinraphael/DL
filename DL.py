@@ -133,8 +133,6 @@ class DL(list):
             Args:
                 Q (DL)
             """
-        if type(Q) in (int, float):
-            return self.inversed() * Q
         return self.inversed() * Q
 
     def __str__(self) -> str:
