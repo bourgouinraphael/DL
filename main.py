@@ -45,6 +45,9 @@ class DL(list):
         n = min(self.ordre, Q.ordre)
         return DL([self.DL[i] + Q.DL[i] for i in range(n)])
 
+    def __sub__(self, Q):
+        return self + -1*Q
+
     def __mul__(self, Q):
         if type(Q) in (float, int):
             return self.scalaire(Q)
@@ -150,8 +153,8 @@ class DL(list):
 if __name__ == "__main__":
     DL4_exp = DL(["1", "1", "1/2", "1/6", "1/24"])
     DL4_cos = DL(["1", "0", "-1/2", "0", "1/24"])
-    exp_cos = DL4_exp + DL4_cos
-    print(f"e^x + cos(x)= {exp_cos}")
+    exp_cos = DL4_exp - DL4_cos
+    print(f"e^x - cos(x)= {exp_cos}")
     DL4_ln = DL(["0", "1", "-1/2", "1/3", "-1/4"])
     DL4_sh = DL(["0", "1", "0", "1/6", "0"])
     P = DL4_ln * DL4_sh
